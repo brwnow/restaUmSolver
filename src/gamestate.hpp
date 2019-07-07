@@ -46,6 +46,8 @@ private:
         boardState &= ~(0x1 << index);
         boardState &= ~(0x1 << neighbor);
         boardState |= 0x1 << neighborOfNeighbor;
+
+        --piecesCount;
     }
 };
 
