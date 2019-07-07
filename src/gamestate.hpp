@@ -40,8 +40,8 @@ private:
     }
 
     inline void move(uint8_t index, uint8_t direction) {
-        uint8_t neighbor =              (uint8_t)cellsVicinityTable[index][direction],
-                neighborOfNeighbor =    (uint8_t)cellsVicinityTable[neighbor][direction];
+        const uint8_t   neighbor =              (uint8_t)cellsVicinityTable[index][direction],
+                        neighborOfNeighbor =    (uint8_t)cellsVicinityTable[neighbor][direction];
 
         boardState &= ~(0x1 << index);
         boardState &= ~(0x1 << neighbor);
