@@ -47,17 +47,7 @@ GameState::GameState() :
     boardState(defaultInitialState),
     piecesCount(defaultPiecesCount)
 {
-    list<GameState> *childList = getChildStatesList();
-    int count = 1;
 
-    for(list<GameState>::iterator it = childList->begin(); it != childList->end(); ++it) {
-        (*it).print();
-
-        cout << "\nChild " << count++ << " of " << childList->size() << " ...";
-        cin.ignore();
-    }
-
-    delete childList;
 }
 
 list<GameState>* GameState::getChildStatesList() const {
