@@ -29,23 +29,23 @@ private:
     uint8_t     piecesCount;
 
     inline bool getBoardCell(uint8_t index) const {
-        return (0x1 << index) & boardState;
+        return (0x1ULL << index) & boardState;
     }
 
     inline void setBoardCell(uint8_t index, bool value) {
         if(value)
-            boardState |= 0x1 << index;
+            boardState |= 0x1ULL << index;
         else
-            boardState &= ~(0x1 << index);
+            boardState &= ~(0x1ULL << index);
     }
 
     inline void move(uint8_t index, uint8_t direction) {
         const uint8_t   neighbor =              (uint8_t)cellsVicinityTable[index][direction],
                         neighborOfNeighbor =    (uint8_t)cellsVicinityTable[neighbor][direction];
 
-        boardState &= ~(0x1 << index);
-        boardState &= ~(0x1 << neighbor);
-        boardState |= 0x1 << neighborOfNeighbor;
+        boardState &= ~(0x1ULL << index);
+        boardState &= ~(0x1ULL << neighbor);
+        boardState |= 0x1ULL << neighborOfNeighbor;
 
         --piecesCount;
     }
