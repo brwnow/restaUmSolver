@@ -2,10 +2,6 @@
 
 #include <windows.h>
 
-#include <iostream>
-using std::cout;
-using std::cin;
-
 const int8_t GameState::cellsVicinityTable[33][4] =
                                 {
                                     {NO_NEIGHBOR, 3, NO_NEIGHBOR, 1},   // cell 0
