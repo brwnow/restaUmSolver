@@ -1,14 +1,17 @@
 #ifndef _SOLVER_HPP_
 #define _SOLVER_HPP_
 
+#include <cstdint>
 #include <memory>
 #include <list>
+#include <bitset>
 
 #include "gamestate.hpp"
 
 using std::shared_ptr;
 using std::weak_ptr;
 using std::list;
+using std::bitset;
 
 class Solver {
 public:
@@ -19,7 +22,12 @@ public:
     bool solve();
 
 private:
-    GameState initialState;
+    static const uint64_t   exploredSetBitmask = 0x100000000ULL,
+                            bitmask32bits = 0xFFFFFFFFULL;
+
+    GameState                   initialState;
+    bitset<0xFFFFFFFF>          *lowbitExploredSet,
+                                *hibitExploredSet;
     shared_ptr<list<GameState>> solution;
 
     bool recursiveSolve(GameState currentState);
