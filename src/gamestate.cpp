@@ -2,10 +2,6 @@
 
 #include <windows.h>
 
-#include <iostream>
-using std::cout;
-using std::cin;
-
 const int8_t GameState::cellsVicinityTable[33][4] =
                                 {
                                     {NO_NEIGHBOR, 3, NO_NEIGHBOR, 1},   // cell 0
@@ -130,4 +126,7 @@ void GameState::print() const {
                 WriteConsole(hConsole, "\372", 1, NULL, NULL);
         }
     }
+
+    pos.X = 0; pos.Y = 0;
+    SetConsoleCursorPosition(hConsole, pos);
 }
