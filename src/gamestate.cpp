@@ -126,4 +126,7 @@ void GameState::print() const {
                 WriteConsole(hConsole, "\372", 1, NULL, NULL);
         }
     }
+
+    pos.X = 0; pos.Y = 0;
+    SetConsoleCursorPosition(hConsole, pos);
 }
