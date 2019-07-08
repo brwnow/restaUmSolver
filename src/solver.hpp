@@ -30,6 +30,19 @@ private:
                                 *hibitExploredSet;
     shared_ptr<list<GameState>> solution;
 
+    inline bool stateAlreadyVisited(uint64_t stateHash) {
+        return stateHash & exploredSetBitmask ?
+                                    hibitExploredSet->test( (size_t)((stateHash & bitmask32bits) - 0x1ULL) ) :
+                                    lowbitExploredSet->test( (size_t)((stateHash & bitmask32bits) - 0x1ULL) );
+    }
+
+    inline void markStateAsVisited(uint64_t stateHash) {
+        if(stateHash & exploredSetBitmask)
+            hibitExploredSet->set( (size_t)((stateHash & bitmask32bits) - 0x1ULL) );
+        else
+            lowbitExploredSet->set( (size_t)((stateHash & bitmask32bits) - 0x1ULL) );
+    }
+
     bool recursiveSolve(GameState currentState);
 
 };
