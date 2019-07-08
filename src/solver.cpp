@@ -2,6 +2,8 @@
 
 Solver::Solver(GameState initialState) :
     initialState(initialState),
+    lowbitExploredSet(new bitset<0xFFFFFFFF>()),
+    hibitExploredSet(new bitset<0xFFFFFFFF>()),
     solution(nullptr)
 {
 
@@ -13,6 +15,9 @@ weak_ptr<const list<GameState>> Solver::getSolution() const {
 
 bool Solver::solve() {
     solution = shared_ptr<list<GameState>>(new list<GameState>());
+
+    lowbitExploredSet->reset();
+    hibitExploredSet->reset();
 
     return recursiveSolve(initialState);
 }
