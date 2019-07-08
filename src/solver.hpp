@@ -16,6 +16,7 @@ using std::bitset;
 class Solver {
 public:
     Solver(GameState initialState);
+    ~Solver();
 
     weak_ptr<const list<GameState>> getSolution() const;
 

@@ -9,6 +9,11 @@ Solver::Solver(GameState initialState) :
 
 }
 
+Solver::~Solver() {
+    delete lowbitExploredSet;
+    delete hibitExploredSet;
+}
+
 weak_ptr<const list<GameState>> Solver::getSolution() const {
     return weak_ptr<const list<GameState>>(solution);
 }
