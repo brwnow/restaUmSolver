@@ -33,6 +33,8 @@ bool Solver::recursiveSolve(GameState currentState) {
         list<GameState> *childStates = currentState.getChildStatesList();
         bool success = false;
 
+        markStateAsVisited(currentState.hash());
+
         for(list<GameState>::iterator it = childStates->begin(); it != childStates->end(); ++it) {
             success = recursiveSolve(*it);
 
