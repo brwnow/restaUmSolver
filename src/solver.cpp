@@ -23,7 +23,9 @@ bool Solver::solve() {
 }
 
 bool Solver::recursiveSolve(GameState currentState) {
-    if(currentState.getPiecesCount() == 1) {
+    if(stateAlreadyVisited(currentState.hash())) {
+        return false;
+    } else if(currentState.getPiecesCount() == 1) {
         solution->push_front(currentState);
 
         return true;
